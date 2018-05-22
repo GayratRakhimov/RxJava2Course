@@ -6,6 +6,8 @@ import android.util.Log;
 
 import com.gayratrakhimov.rxjava2course.R;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -20,7 +22,9 @@ public class ObservableActivity extends AppCompatActivity {
         setContentView(R.layout.activity_observable4);
 
         // Observable observable = Observable.just(3, 5, 2);
-        Observable observable = Observable.range(1, 10);
+        // Observable observable = Observable.range(1, 10);
+        // Observable observable = Observable.interval(1, TimeUnit.SECONDS);
+        Observable observable = Observable.timer(3, TimeUnit.SECONDS);
 
         Observer observer = new Observer() {
             @Override
@@ -30,12 +34,12 @@ public class ObservableActivity extends AppCompatActivity {
 
             @Override
             public void onNext(Object o) {
-                Log.d(TAG, "onNext: "+o);
+                Log.d(TAG, "onNext: " + o);
             }
 
             @Override
             public void onError(Throwable e) {
-                Log.d(TAG, "onError: "+e.toString());
+                Log.d(TAG, "onError: " + e.toString());
             }
 
             @Override
